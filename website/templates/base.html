@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load staticfiles %}
+    <title>{% block title %}PRM{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta %}
+    {% endblock %}
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="wrapper-container">
+        <div id="header">
+            <div id="logo">
+                <a href="{% url 'home' %}">
+                    <img src="">
+                </a>
+            </div>
+            <div id="admin-panel">
+            {% block login-panel %}
+            {% if user.is_authenticated %}
+                <span>{{ user.first_name }} {{ user.last_name }}</span> |
+                <span><a href="{% url 'admin:index' %}">Admin Dashboard</a></span> |
+                <span><a href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></span>
+            {% else %}
+                <span>
+                    <a class="hidden-login" href="{% url 'login' %}?next={% firstof request.path '/' %}">Login</a>
+                </span>
+            {% endif %}
+            {% endblock %}
+            </div>
+        {% block header %}
+        {% endblock %}
+        </div><!--  end header  -->
+
+        <div id="navbar-container">
+            <nav role="navigation" class="navbar navbar-static-top">
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        {% block navbar-list %}
+                        <li {% block navbar-reviews %}class="hiddentab"{% endblock %}><a href="">nav1</a></li>
+                        {% endblock %}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+        </div>
+
+        <div class="body-container">
+            {% block messages %}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endblock %}
+            {% block content %}
+            {% endblock %}
+
+            <div id="footer">
+                <div class="container">
+                    <div class="social">
+                        <a href="http://www.facebook.com/suitcaseclinic">
+                        </a>
+                        <a href="http://twitter.com/suitcaseclinic">
+                        </a>
+                        <a href="http://www.suitcaseclinic.org/">
+                        </a>
+                    </div>
+                </div>
+            </div><!--  end footer  -->
+        </div>
+
+    {% block scripts %}
+    {% endblock %}
+
+    </div>
+
+</body>
+
+</html>

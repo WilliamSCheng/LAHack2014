@@ -23,9 +23,6 @@ http_status_print = BaseHTTPServer.BaseHTTPRequestHandler.responses
 
 LINKEDIN_URL_1 = "http://api.linkedin.com/v1/companies/universal-name="
 LINKEDIN_URL_2 = ":(id,name,universal-name,company-type,ticker,website-url,industries,status,employee-count-range,locations,description,stock-exchange,founded-year,end-year)"
-CRUNCHBASE_URL_1 = "http://api.crunchbase.com/v/1/company/"
-CRUNCHBASE_URL_2 = ".js?api_key=emy48jd7q3k7kv6tx8ft6adb"
-GLASSDOOR_API = 'http://www.glassdoor.com/GD/Reviews/company-reviews.htm'
 
 def get_auth():
   consumer = oauth.Consumer(consumer_key, consumer_secret)
@@ -114,14 +111,10 @@ def company_api_function(user, api, data):
   # Get authorization set up and create the OAuth client
   client = get_auth() 
   response = make_request(client, LINKEDIN_URL_1 + user + LINKEDIN_URL_2, {"x-li-format":'json'})
-  d1 = json.loads(response)
   try:
     d1 = json.loads(response)
   except Exception:
     return "Sorry. The LinkedIn API could not find information for user " + user
-
-
-
 
 
 

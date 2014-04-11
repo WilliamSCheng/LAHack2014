@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView, View
 
-from bpsc.users.forms import SCUserCreationForm
+from website.users.forms import SCUserCreationForm
 
 
 class UserRegistrationView(FormView):

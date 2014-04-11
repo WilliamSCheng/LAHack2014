@@ -1,108 +1,85 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    {% load staticfiles %}
-    <title>{% block title %}PRM{% endblock %}</title>
+{% load staticfiles %}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block meta %}
-    {% endblock %}
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+{% block meta %}
+<meta name="description" content="">
+<meta name="author" content="">
+{% endblock %}
 
-    {% block head %}
-    {% endblock %}
-</head>
+{% block head %}
+<!-- Bootstrap core CSS -->
+<!-- Add custom CSS here -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 
-<body>
-    <div class="wrapper-container">
-        <div id="header">
-            <div id="logo">
-                <a href="{% url 'home' %}">
-                    <img src="{% static 'css/images/SuitcaseLogo.png' %}">
-                </a>
-            </div>
-            <div id="admin-panel">
-            {% block login-panel %}
-            {% if user.is_authenticated %}
-                <span>{{ user.first_name }} {{ user.last_name }}</span> |
-                <span><a href="{% url 'admin:index' %}">Admin Dashboard</a></span> |
-                <span><a href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></span>
-            {% else %}
-                <!--
-                <span class="hidden-login">
-                    <a class="hidden-login" href="{% url 'login' %}?next={% firstof request.path '/' %}">Admin Login</a>
-                </span>
-            -->
-            {% endif %}
-            {% endblock %}
-            </div>
-        {% block header %}
-        {% endblock %}
-        </div><!--  end header  -->
+{% endblock %}
+{% block content %}
 
-        <div id="navbar-container">
-            <nav role="navigation" class="navbar navbar-static-top">
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                        {% block navbar-list %}
-                        <li {% block navbar-employment %}class="hiddentab"{% endblock %}><a href="{% url 'search:employment_list' %}">EMPLOYMENT</a></li>
-
-                        <li {% block navbar-housing %}class="hiddentab"{% endblock %}><a href="{% url 'search:housing_list' %}">HOUSING</a></li>
-
-                        <li {% block navbar-community %}class="hiddentab"{% endblock %}><a href="{% url 'search:community_list' %}">COMMUNITY</a></li>
-
-                        <li {% block navbar-government %}class="hiddentab"{% endblock %}><a href="{% url 'search:government' %}">GOVERNMENT</a></li>
-
-                        <li {% block navbar-legal %}class="hiddentab"{% endblock %}><a href="{% url 'search:legal_list' %}">LEGAL</a></li>
-
-                        <li {% block navbar-reviews %}class="hiddentab"{% endblock %}><a href="{% url 'reviews:reviews_list' %}">REVIEWS</a></li>
-                        {% endblock %}
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-        </div>
-
-        <div class="body-container">
-            {% block messages %}
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            {% endblock %}
-            {% block content %}
-            {% endblock %}
-
-            <div id="footer">
-                <div class="container">
-                    <div class="social">
-                        <a href="http://www.facebook.com/suitcaseclinic">
-                            <img class="social-media-icon" id="facebook" src="{% static 'css/images/facebook.png' %}" />
-                        </a>
-                        <a href="http://twitter.com/suitcaseclinic">
-                            <img class="social-media-icon" id="twitter" src="{% static 'css/images/twitter.png' %}" />
-                        </a>
-                        <a href="http://www.suitcaseclinic.org/">
-                            <img class="social-media-icon" id="suitcase-icon" src="{% static 'css/images/icon-suitcase.png' %}" />
-                        </a>
-                    </div>
-                </div>
-            </div><!--  end footer  -->
-        </div>
-
-    {% block scripts %}
-    {% endblock %}
-
+<div class="container welcome-container">
+  <div class="welcome">
+    <div class="row">
+      <h1 id="big-welcome">WELCOME</h1>
+      <p>TO THE PRM HOMEPAGE</p>
+      <div class="redline"></div>
+      <p>additional stuff here</p>
     </div>
+  </div>
 
-</body>
-
-</html>
+  <div class="tab-descriptions">
+    <a href="">
+      <div class="tab-box">
+        <div class="box-name">
+          <p>nav1</p>
+        </div>
+        <div class="box-description">
+          <p>description1</p>
+        </div>
+      </div>  
+    </a>
+    
+    <a href="">
+      <div class="tab-box">
+        <div class="box-name">
+          <p>nav2</p>
+        </div>
+        <div class="box-description">
+          <p>description2</p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="">
+      <div class="tab-box">
+        <div class="box-name">
+          <p>nav3</p>
+        </div>
+        <div class="box-description">
+          <p>description3</p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="">
+      <div class="tab-box">
+        <div class="box-name">
+          <p>nav4</p>
+        </div>
+        <div class="box-description">
+          <p>description4</p>
+        </div>
+      </div>
+    </a>
+    
+    <a href="">
+      <div class="tab-box">
+        <div class="box-name">
+          <p>nav5</p>
+        </div>
+        <div class="box-description">
+          <p>description5</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}
