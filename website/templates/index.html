@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <title>Berkeley Investment Group</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="{% static "css/vendor/bootstrap/bootstrap.css" %}">
+
+    <!-- Glyphicons -->
+    <link rel="stylesheet" href="{% static "css/vendor/glyphicons/glyphicons.css" %}">
+    <link rel="stylesheet" href="{% static "css/vendor/glyphicons/filetypes.css" %}">
+    <link rel="stylesheet" href="{% static "css/vendor/glyphicons/social.css" %}">
+
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+
+    <!-- LayerSlider styles -->
+    <link rel="stylesheet" href="/static/css/vendor/layerslider/layerslider.css" type="text/css">
+
+    <!-- Grove Styles (switch for different color schemes, e.g. "styles-cleanblue.css") -->
+    <link rel="stylesheet" href="static/css/styles-blue.css" id="grove-styles">
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="css/ie8.css">        
+        <script src="js/vendor/google/html5-3.6-respond-1.1.0.min.js"></script>
+    <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery/jquery-1.9.1.min.js"><\/script>')</script>
+    <!-- jQuery with jQuery Easing, and jQuery Transit JS -->
+     
+    <!-- LayerSlider from Kreatura Media with Transitions -->
+    <script src="static/js/vendor/layerslider/greensock.js" type="text/javascript"></script>
+    <script src="static/js/vendor/layerslider/layerslider.transitions.js" type="text/javascript"></script>
+    <script src="static/js/vendor/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+
+    <!-- Grove Layerslider initiation script -->
+    <script src="static/js/grove-slider.js" type="text/javascript"></script>
+    
+</head> 
+<body>
+    
+    {% block messages %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endblock %}
+
+    <header>
+        <nav class="navbar navbar-default grove-navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <h3> Berkeley Investment Group </h3>
+                </div>
+
+                <div class="collapse navbar-collapse grove-nav">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/fund_tracker/stock_list">Fund Tracker</a></li>
+                        <li><a href="/application_portal/submit_application">Application Portal</a></li>
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>   
+                        <li><a href="{% url 'news' %}">News</a></li>   
+                        <li><a href="{% url 'team' %}">Team</a></li>  
+                        <li><a href="{% url 'fund' %}">Fund</a></li>  
+                        <li><a href="{% url 'resources' %}">Resources</a></li> 
+                        <li><a href="{% url 'join' %}">Join</a></li>                               
+                    </ul>        
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </header>
+
+    <!--LayerSlider begin-->
+
+    <!-- Note: Layerslider is configured in js/grove-slider.js -->
+    <div class="hidden-xs">
+        <div id="layerslider" style="width: 100%; height: 405px; margin: 0px auto;">
+            <div class="ls-slide" data-ls="transition2d:5;">
+                <img class="ls-bg" src="/static/img2/homepage/slider_1.jpg" alt="Slider Background">
+
+                <div class="ls-l large-caption" 
+                     style="top:150px; left:20px;"
+                     data-ls="delayin: 750; offsetxin: 0; offsetxout: 0;">
+                    <div><p>Berkeley Investment Group</p></div>
+                    <div><p>More than $130,000 AUM.</p></div>
+                    <div><p>The First & Largest Investment Club at Cal.</p></div>
+                </div>
+            </div>
+
+            <div class="ls-slide" data-ls="transition2d:5;">
+                <img class="ls-bg" src="/static/img2/homepage/slider_2.jpg" alt="Slider Background">
+
+                <div class="ls-l large-caption" 
+                     style="top:130px; left:700px;"
+                     data-ls="delayin:750; offsetxin: 0; offsetxout: 0;">
+                    <div><p>Winners of the:</p></div>
+                    <div><p>2013 Georgetown Stock Pitch Competition</p></div>
+                </div>
+
+            </div>   
+        </div>
+    </div>
+    
+    <!--LayerSlider end-->
+
+    <!-- Layerslider substitute on x-small devices -->
+    <div class="widewrapper pagetitle visible-xs">
+        <div class="container">
+            <h1>Welcome to Grove!</h1>        
+        </div>
+    </div> 
+
+    <div class="widewrapper">
+        <div class="container">
+            <div class="row features">
+                <div class="col-md-4 feature">
+                    <h3><a class="glyphicons circle_question_mark"></a>Why BIG?</h3>
+                    <p>BIG is the first and largest undergraduate investment club at UC Berkeley. As a student organization we have two goals: to educate our members and have them feel comfortable investing on their own when they graduate, and to manage our fund.</p>
+                </div>
+                <div class="col-md-4 feature">
+                    <h3><i class="glyphicons charts"></i>The Fund</h3>
+                    <p>We are a student run mutual fund with over $130,000 in assets under management. Our portfolio has regularly beaten out the S&P, averaging a 15% return over the past fiscal year.</p>
+                </div>
+                <div class="col-md-4 feature">
+                    <h3><i class="social linked_in"></i>Our Network</h3>
+                    <p>BIG alumni have graduated to work in a variety of hedge funds, private equity firms, VCs, asset managers, and investment banks. Our network includes professionals from BlackRock, Goldman Sachs, JP Morgan, Morgan Stanley, and many more.</p>
+                </div>        
+            </div>
+        </div>
+    </div>
+
+    <div class="widewrapper weak-highlight">
+        <div class="container content our-clients">
+            <div class="showroom-controls">
+                <div class="links">Our clients</div>
+            </div>
+            <div class="clients">
+                <div class="client"><img src="/static/img/logos/logo1.png" class="img-responsive" alt="A Bright Idea"></div>
+                <div class="client"><img src="/static/img/logos/logo2.png" class="img-responsive" alt="U Read"></div>
+                <div class="client"><img src="/static/img/logos/logo3.png" class="img-responsive" alt="Drop"></div>
+                <div class="client"><img src="/static/img/logos/logo4.png" class="img-responsive" alt="Alaska Anchor"></div>
+            </div>
+        </div>
+    </div> 
+
+    <footer class="widewrapper footer">
+        <div class="container">
+            <div class="row footer">
+                <div class="col-sm-4">
+                    <h4>About Us</h4>
+                    <p>Our mission is to deliver hands-on education of fundamental investing strategies and techniques to the undergraduate community.</p>
+                </div>
+                
+                <div class="col-sm-4">
+                    <h4>Get Involved</h4>
+                    <p>Learn about our <a href="about.html">history</a> and <a href="team.html">executive board</a>, stay updated on upcoming <a href="news.html">events</a>, or find out more about <a href="join.html">joining BIG</a>.</p>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <h4>Connect With Us</h4>
+                    <a href="https://www.facebook.com/BerkeleyInvestmentGroup" class="social facebook"></a>
+                    <a href="https://twitter.com/invest_berkeley" class="social twitter"></a>
+                </div>            
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                <p>Copyright 2014 Berkeley Investment Group. Site built by Michael Zhu</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="static/js/vendor/modernizr/modernizr.js"></script>
+</body>
+</html>

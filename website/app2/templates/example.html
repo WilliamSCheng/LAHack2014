@@ -1,0 +1,94 @@
+<html>
+
+    <head>
+        {% load staticfiles %}    
+        <!-- Bootstrap styles -->
+        <link rel="stylesheet" href="/static/css/vendor/bootstrap/bootstrap.css">
+
+        <!-- Glyphicons -->
+        <link rel="stylesheet" href="/static/css/vendor/glyphicons/glyphicons.css">
+        <link rel="stylesheet" href="/static/css/vendor/glyphicons/filetypes.css">
+        <link rel="stylesheet" href="/static/css/vendor/glyphicons/social.css">
+
+        <!-- Google Webfonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+
+        <!-- LayerSlider styles -->
+        <link rel="stylesheet" href="//static/css/vendor/layerslider/layerslider.css" type="text/css">
+
+        <!-- Grove Styles (switch for different color schemes, e.g. "styles-cleanblue.css") -->
+        <link rel="stylesheet" href="/static/css/styles-blue.css" id="grove-styles">
+
+        <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/ie8.css">        
+            <script src="js/vendor/google/html5-3.6-respond-1.1.0.min.js"></script>
+        <![endif]-->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery/jquery-1.9.1.min.js"><\/script>')</script>
+        <!-- jQuery with jQuery Easing, and jQuery Transit JS -->
+         
+        <!-- LayerSlider from Kreatura Media with Transitions -->
+        <script src="/static/js/vendor/layerslider/greensock.js" type="text/javascript"></script>
+        <script src="/static/js/vendor/layerslider/layerslider.transitions.js" type="text/javascript"></script>
+        <script src="/static/js/vendor/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+
+        <!-- Grove Layerslider initiation script -->
+        <script src="/static/js/grove-slider.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-default grove-navbar" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <h3> Berkeley Investment Group </h3>
+                    </div>
+
+                    <div class="collapse navbar-collapse grove-nav">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/fund_tracker/stock_list">Fund Tracker</a></li>
+                            <li><a href="/application_portal/submit_application">Application Portal</a></li>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About Us</a></li>   
+                            <li><a href="{% url 'news' %}">News</a></li>   
+                            <li><a href="{% url 'team' %}">Team</a></li>  
+                            <li><a href="{% url 'fund' %}">Fund</a></li>  
+                            <li><a href="{% url 'resources' %}">Resources</a></li> 
+                            <li><a href="{% url 'join' %}">Join</a></li>                               
+                        </ul>        
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
+        </header>
+        <br> 
+        FUND TRACKER
+
+        {% for stock in stock_list %}
+        <table border="1" style="width:300px">
+            <tr> 
+                <td> {{ stock.symbol}} </td>
+                <td> Shares: {{ stock.shares }} </td>
+                <td> Entering price: {{ stock.entering_price }} </td>
+
+                <td> Stock exchange: {{ stock.exchange}} </td>
+                <td> Current price: {{ stock.current_price }} </td>
+                <td> Volume: {{ stock.volume }} </td>
+                <td> Current PE: {{ stock.current_PE }} </td>
+                <td> Current PB: {{ stock.current_PB }} </td>
+                <td> Current Earnings: {{ stock.current_difference }} </td>
+                <td> Current Earnings percentage: {{ stock.current_difference_percentage }}% </td>
+                <!-- <td> {{ stock.current_ROA }} </td> -->
+                <!-- <td> {{ stock.current_ROE }} </td> -->
+                <!-- <td> {{ stock.current_net_margin }} </td> -->
+                <!-- <td> {{ stock.current_rev_growth }} </td> -->
+                <!-- <td> {{ stock.current_dividend_yield }} </td> -->
+            </tr>
+        </table>
+        {% endfor %}
+    </body>
+</html>
+
+
+
+
