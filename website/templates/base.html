@@ -31,7 +31,7 @@
             <div id="admin-panel">
             {% block login-panel %}
             {% if user.is_authenticated %}
-                <span>{{ user.first_name }} {{ user.last_name }}</span> |
+                <span>{{ user.first_name }} {{ user.last_name }} {{ user.username }}</span> |
                 <span><a href="{% url 'admin:index' %}">Admin Dashboard</a></span> |
                 <span><a href="{% url 'logout' %}?next={% firstof request.path '/' %}">Logout</a></span>
             {% else %}
