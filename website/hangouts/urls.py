@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from website.fund_tracker.views import StockListView
+from website.hangouts.views import HangoutListView
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -14,6 +14,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^stock_list/$', StockListView.as_view(), name='stock_list'),
+    url(r'^hangout_list/$', HangoutListView.as_view(), name='hangout_list'),
 
 )
