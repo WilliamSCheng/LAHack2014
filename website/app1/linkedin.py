@@ -28,7 +28,6 @@ def get_auth():
   consumer = oauth.Consumer(consumer_key, consumer_secret)
   client = oauth.Client(consumer)
 
-
   try:
       filehandle = open(config_file)
   except IOError as e:

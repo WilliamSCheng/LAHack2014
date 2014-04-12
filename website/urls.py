@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^$', home, name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
-
+    url(r'^register/$', UserRegistrationView.as_view(), name='register'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
